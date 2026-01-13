@@ -1,5 +1,6 @@
 """Convert pgadmin csv output to parquet (useful for data/plotting things)"""
 
+import numpy as np
 import pandas as pd
 from datetime import datetime
 from pathlib import Path
@@ -18,6 +19,11 @@ for i, file in enumerate(files, start=1):
     print("... reading")
     data = pd.read_csv(file, escapechar="'")
     print("... saving")
+
+    # FUCK pandas - no nulls in int columns cos its a little SHIT lol
+    if file.name == "post.csv":
+        data['likes'] = data['likes'].astype(str)
+
     data.to_parquet(outdir / f"{file.stem}.parquet")
 
 print("Done!")
