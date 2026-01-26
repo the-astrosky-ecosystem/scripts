@@ -8,7 +8,7 @@ import time
 HANDLE: str = "emily.space"
 PASSWORD: str = os.getenv("BLUESKY_PASSWORD")
 HOSTNAME: str = "feed-all.astronomy.blue"
-AVATAR_LOCATIONS: Path = Path("/home/emily/bluesky/branding/jpg")
+AVATAR_LOCATIONS: Path = Path("/home/emily/bluesky/branding/jpg_small")
 SERVICE_DID: str = ""  # Only use this if you want a service did different from did:web
 
 # FEED NAMES AND DESCRIPTIONS
@@ -16,7 +16,7 @@ FEEDS = {
     "astro-all": {
         "DISPLAY_NAME": "Astrosky",
         "DESCRIPTION": "All posts from the astronomy community on Bluesky. Sign up to post here via @bot.astronomy.blue",
-        "AVATAR_PATH": AVATAR_LOCATIONS / "astro-all.jpg",
+        "AVATAR_PATH": AVATAR_LOCATIONS / "astrosky.jpg",
     },
     "astro": {
         "DISPLAY_NAME": "Astronomy",
@@ -167,9 +167,9 @@ def get_client():
 if __name__ == "__main__":
     client = get_client()
     # Upload all:
-    # for feed in FEEDS:
-    #     upload_feed(feed, client=client)
-    #     time.sleep(1)  # Just to be less spammy
+    for feed in FEEDS:
+        upload_feed(feed, client=client)
+        time.sleep(1)  # Just to be less spammy
 
     # Upload just one:
-    upload_feed('methods', client=client)
+    # upload_feed('methods', client=client)
