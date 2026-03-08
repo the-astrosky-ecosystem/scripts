@@ -7,7 +7,7 @@ import time
 # MAIN ENVIRONMENT VARIABLES
 HANDLE: str = "emily.space"
 PASSWORD: str = os.getenv("BLUESKY_PASSWORD")
-HOSTNAME: str = "feed-all.astronomy.blue"
+HOSTNAME: str = "feeds.astrosky.eco"
 AVATAR_LOCATIONS: Path = Path("/home/emily/bluesky/branding/jpg_small")
 SERVICE_DID: str = ""  # Only use this if you want a service did different from did:web
 
